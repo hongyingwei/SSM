@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="user">
+	<!-- 1.添加 -->
+	<insert id="saveUserInfo" parameterType="com.javaee.mybatis.entity.User">
+		INSERT INTO t_user(user_name,cnname,sex,mobile,email,note)
+        VALUES(#{user_name},#{cnname},#{sex},#{mobile},#{email},#{note})
+	</insert>
+	<!-- 2.更改用户信息 -->
+	
+	<!-- 3.根据id删除用户 -->
+	<!-- 4.根据id查询用户 -->
+	<!-- 5.根据用户名模糊查询 -->
+</mapper>

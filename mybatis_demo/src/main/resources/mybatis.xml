@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<!-- mybatis自动扫描该包中的所有类 -->
+	<typeAliases>
+		<package name="com.woniu.mybatis.entity" />
+	</typeAliases>
+
+	<environments default="development">
+		<environment id="development">
+			<!-- JDBC – 这个配置直接简单使用了 JDBC 的提交和回滚设置。它依赖于从数据源得到的连接来管理事务范围。 -->
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="com.mysql.cj.jdbc.Driver" />
+				<property name="url" value="jdbc:mysql:///mybatis" />
+				<property name="username" value="root" />
+				<property name="password" value="15874473705hyw" />
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<!-- 建立关联关系 -->
+	<mappers>
+		<mapper resource="mappers/user.xml"/>
+	</mappers>
+	
+</configuration>
