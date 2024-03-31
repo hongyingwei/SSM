@@ -2,6 +2,7 @@ package com.javaee.mybatis.dao;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -43,6 +44,27 @@ public class UserDaoTest {
         user.setNote("fadsf");
         userDao.saveUserInfo(user);
     }
+	
+	@Test
+	public void updateUser() {
+		User user = new User();
+        user.setCnname("张三3");
+        user.setId(1);
+        userDao.updateUser(user);
+	}
+	
+	@Test
+	public void deleteById() {
+		userDao.deleteById(5);
+	}
+	
+	@Test
+	public void queryByName() {
+		List<User> users = userDao.queryByName("张");
+		for (User u: users) {
+            System.out.println(u);
+        }
+	}
 	
 	@After
     public void after() {

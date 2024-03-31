@@ -26,28 +26,53 @@ public class UserDaoImpl implements UserDao{
 		sqlSession.close();
 	}
 
+	/**
+     * 更新用户信息,更新用户名
+     * @param user
+     */
 	@Override
 	public void updateUser(User user) {
 		// TODO Auto-generated method stub
-		
+		sqlSession.update("user.updateUser", user);
+		sqlSession.commit();
+		sqlSession.close();
 	}
 
+	/**
+     * 根据ID，删除用户信息
+     * @param id
+     */
 	@Override
 	public void deleteById(int id) {
 		// TODO Auto-generated method stub
-		
+		sqlSession.delete("user.deleteById", id);
+		sqlSession.commit();
+		sqlSession.close();
 	}
 
+	/**
+     * 根据ID，查询用户信息
+     * @param id
+     * @return
+     */
 	@Override
 	public User queryById(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		User user = sqlSession.selectOne("user.queryById", id);
+		sqlSession.close();
+		return user;
 	}
-
+	/**
+     * 根据用户名，查询用户信息
+     * @param name
+     * @return
+     */
 	@Override
 	public List<User> queryByName(String name) {
 		// TODO Auto-generated method stub
-		return null;
+		List<User> users = sqlSession.selectList("user.queryByName", name);
+		sqlSession.close();
+		return users;
 	}
 	
 }
