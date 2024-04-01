@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.javaee.mybatis.mappers.UserMapper">
+	<!-- 1.添加用户信息，并返回字段ID的值 -->
+    <insert id="saveUserInfo"
+            parameterType="com.javaee.mybatis.entity.User">
+        <selectKey keyColumn="id" keyProperty="id" order="AFTER"
+                   resultType="int">
+            select LAST_INSERT_ID()
+        </selectKey> 
+        INSERT INTO t_user(user_name,cnname,sex,mobile,email,note) VALUES(#{user_name},#{cnname},#{sex},#{mobile},#{email},#{note})
+       
+        <!-- <selectKey keyProperty="cnname" order="BEFORE"
+                   resultType="string">
+            select UUID()
+        </selectKey>
+        INSERT INTO t_user(id,user_name,cnname,sex,mobile,email,note) 
+        VALUES(#{id},#{user_name},#{cnname},#{sex},#{mobile},#{email},#{note}) -->
+    </insert>
+	
+	<!-- 2.根据id，更改用户信息,更改用户名 -->
+	<update id="updateUser" parameterType="com.javaee.mybatis.entity.User">
+		update t_user set cnname=#{cnname} where id=#{id}
+	</update>
+	
+	<!-- 3.根据id删除用户 -->
+	<delete id="deleteById" parameterType="int">
+		delete from t_user where id=#{value}
+	</delete>
+	
+	<!-- 4.根据id查询用户 -->
+	<select id="queryById" parameterType="int" resultType="com.javaee.mybatis.entity.User">
+		select * from t_user where id=#{value}
+	</select>
+	
+	<!-- 5.根据用户名模糊查询 -->
+	<select id="queryByName" parameterType="string" resultType="com.javaee.mybatis.entity.User">
+		select * from t_user where cnname like '%${value}%'
+	</select>
+</mapper>
