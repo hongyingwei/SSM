@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		   http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+		   http://www.springframework.org/schema/context
+	       http://www.springframework.org/schema/context/spring-context-4.2.xsd
+		   http://www.springframework.org/schema/aop
+	       http://www.springframework.org/schema/aop/spring-aop-4.2.xsd">
+
+    <!--
+        id:bean的唯一标识
+        class:bean的权限类名
+    -->
+    <bean id="userAction2" class="com.javaee.spring.action.UserAction2">
+        <!-- 通过构造方法注入 -->
+        <constructor-arg name="userService" ref="userService"/>
+        <constructor-arg name="username" value="张三"/>
+        <!-- 通过set方法注入 -->
+        <property name="username" value="张三"/>
+        <property name="userService" ref="userService"/>
+        <property name="someList">
+        	<list>
+        		<value>"张三"</value>
+        		<!-- <ref bean="myDataSource"/> -->
+        	</list>
+        </property>
+        <property name="someMap">
+        	<map>
+        		<entry key="李四">
+        			<ref bean="userService"></ref>
+        		</entry>
+        	</map>
+        </property>
+        <property name="props">
+        	<props>
+        		<prop key="url">http://www.hello.com</prop>
+        		<prop key="name">hello</prop>
+        	</props>
+        </property>
+    </bean>
+
+    <bean id="userService" class="com.javaee.spring.service.impl.UserServiceImpl"/>
+
+    <context:component-scan base-package="com.javaee.spring.service.impl" />
+
+    <!-- 配置增强 -->
+    <bean id="logger" class="com.javaee.spring.advice.LoggerAdvice"/>
+
+    <!-- 配置aop -->
+    <aop:config>
+       <!--  切点 -->
+        <aop:pointcut expression="execution(* com.javaee.spring.service.impl.IPayServiceImpl.*(..))" id="pointCut"/>
+
+        <!-- 切面：增强和切点 -->
+        <aop:aspect ref="logger">
+            <aop:after method="after" pointcut-ref="pointCut"/>
+            <aop:before method="before" pointcut-ref="pointCut"/>
+            <aop:around method="around" pointcut-ref="pointCut"/>
+        </aop:aspect>
+    </aop:config>
+
+</beans>
