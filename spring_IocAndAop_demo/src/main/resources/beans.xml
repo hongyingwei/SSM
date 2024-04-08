@@ -14,6 +14,7 @@
         id:bean的唯一标识
         class:bean的权限类名
     -->
+    
     <bean id="userAction2" class="com.javaee.spring.action.UserAction2">
         <!-- 通过构造方法注入 -->
         <constructor-arg name="userService" ref="userService"/>
