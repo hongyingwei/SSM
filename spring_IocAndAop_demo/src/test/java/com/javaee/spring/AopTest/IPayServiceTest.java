@@ -21,9 +21,9 @@ public class IPayServiceTest {
     @Test
     public void pay(){
         String result = iPayService.payByPoint(101);
-        System.out.println(result);
+        System.err.println(result);
         result = iPayService.payRMB(9);
-        System.out.println(result);
+        System.err.println(result);
     }
 
 }

@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import org.springframework.stereotype.Service;
 
 import com.javaee.spring.service.IPayService;
+import com.javaee.spring.utils.PayCode;
 
 
 @Service("IPayService")
@@ -18,9 +19,9 @@ public class IPayServiceImpl implements IPayService {
         BigDecimal decimal = new BigDecimal(totalP);
         if (decimal.subtract(new BigDecimal(money)).compareTo(BigDecimal.ZERO) >= 0) {
             totalP = decimal.subtract(new BigDecimal(money)).floatValue();
-            return "success";
+            return PayCode.SUCCESS.getMessage();
         } else {
-            return "fail";
+            return PayCode.FAIL.getMessage();
         }
     }
 
@@ -29,9 +30,17 @@ public class IPayServiceImpl implements IPayService {
         BigDecimal decimal = new BigDecimal(total);
         if (decimal.subtract(new BigDecimal(money)).compareTo(BigDecimal.ZERO) >= 0) {
             total = decimal.subtract(new BigDecimal(money)).floatValue();
-            return "success";
+            return PayCode.SUCCESS.getMessage();
         } else {
-            return "fail";
+            return PayCode.FAIL.getMessage();
         }
+    }
+    
+    public double getTotal() {
+        return total;
+    }
+    
+    public double getTotalRMB() {
+    	return totalP;
     }
 }

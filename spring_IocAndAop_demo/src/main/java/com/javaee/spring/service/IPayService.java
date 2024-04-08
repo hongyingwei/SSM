@@ -14,4 +14,15 @@ public interface IPayService {
      */
     String payRMB(double money);
 
+    /**
+     * 获取总积分
+     * @return
+     */
+    double getTotal();
+    
+    /**
+     * 获取总人民币
+     * @return
+     */
+    double getTotalRMB();
 }
