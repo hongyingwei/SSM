@@ -1,6 +1,5 @@
 package com.javaee.mybatis.entity;
 public class User {
-
     private int id;
     private String user_name;
     private String cnname;
