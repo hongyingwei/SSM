@@ -12,7 +12,7 @@ public class UserServiceImpl implements UserService{
 	public void work() {
 		// TODO Auto-generated method stub
 		log.info("user service working........");
-//		log.error("user error....");
+		log.error("user error....");
 		System.out.println("进入UserService....");
 	}
 }

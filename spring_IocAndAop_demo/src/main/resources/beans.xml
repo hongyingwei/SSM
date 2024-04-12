@@ -15,23 +15,31 @@
         class:bean的权限类名
     -->
     <bean id="userAction2" class="com.javaee.spring.action.UserAction2">
+    
         <!-- 通过构造方法注入 -->
         <constructor-arg name="userService" ref="userService"/>
         <constructor-arg name="username" value="张三"/>
+        
+        
         <!-- 通过set方法注入 -->
         <property name="username" value="张三"/>
         <property name="userService" ref="userService"/>
+       
         <property name="someList">
         	<list>
         		<value>"张三"</value>
         		<!-- <ref bean="myDataSource"/> -->
+        		<value>"张四"</value>
         	</list>
         </property>
         <property name="someMap">
         	<map>
         		<entry key="李四">
-        			<ref bean="userService"></ref>
+        			<ref bean="userService" />
         		</entry>
+        		<!-- <entry key-ref="userService">
+        			<ref bean="userService" />
+        		</entry> -->
         	</map>
         </property>
         <property name="props">
