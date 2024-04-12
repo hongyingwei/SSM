@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+   http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans.xsd
+   http://www.springframework.org/schema/context
+   http://www.springframework.org/schema/context/spring-context.xsd
+   http://www.springframework.org/schema/aop
+   http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<context:component-scan
+		base-package="com.javaee.app.component" />
+
+	<bean id="user" class="com.javaee.app.entity.User" parent="person">
+		<property name="username" value="tomisme" />
+		<!-- <property name="person" ref="person"/> -->
+		<!-- <property name="person.email" value="tom@cat.com"/> -->
+	</bean>
+
+	<bean id="person" class="com.javaee.app.entity.Person">
+		<property name="name" value="Tom" />
+		<property name="age" value="23" />
+	</bean>
+
+	<bean id="jerry" class="com.javaee.app.entity.Person">
+		<constructor-arg value="Jerry" />
+		<constructor-arg value="jerry@cat.com" />
+	</bean>
+
+	<bean id="myController"
+		class="com.javaee.app.component.UserController" />
+
+	<bean id="logAspect" class="com.javaee.app.aop.LogAspect" />
+	<aop:aspectj-autoproxy />
+	<!-- <aop:config> <aop:aspect id="log" ref="logAspect"> <aop:pointcut expression="execution(* 
+		*.list*(..))" id="list"/> <aop:before pointcut-ref="list" method="logBefore"/> 
+		<aop:around pointcut-ref="list" method="logAround"/> </aop:aspect> </aop:config> -->
+</beans>
