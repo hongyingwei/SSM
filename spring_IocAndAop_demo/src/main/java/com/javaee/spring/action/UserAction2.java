@@ -9,6 +9,7 @@ import com.javaee.spring.service.UserService;
 public class UserAction2 {
 	private String username;
 	private UserService userService;
+
 	private List<String> someList;
 	private Map<String, UserService> someMap;
 	private Properties props;
@@ -45,13 +46,12 @@ public class UserAction2 {
 			System.err.println(k + " : " + v.getClass().getName());
 		});
 	}
-	
+
 	public void setProps(Properties props) {
 		System.err.println("props 通过 setter注入......");
-		props.forEach((key, value) 
-				-> System.err.println(key + " = " + value));
+		props.forEach((key, value) -> System.err.println(key + " = " + value));
 		this.props = props;
-		
+
 	}
 
 	public void work() {
@@ -76,5 +76,5 @@ public class UserAction2 {
 
 	public Properties getProps() {
 		return props;
-	}	
+	}
 }

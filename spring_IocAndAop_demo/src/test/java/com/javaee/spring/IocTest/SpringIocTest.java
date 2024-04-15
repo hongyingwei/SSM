@@ -20,14 +20,6 @@ public class SpringIocTest {
 		userService.work();
 	}
 	
-	/**
-	 * 测试主动创建依赖对象
-	 */
-	@Test
-	public void testAction() {
-		UserAction1 userAction = new UserAction1();
-		userAction.work();
-	}
 	
 	/**
 	 * 通过spring的IOC容器构建对象和对象依赖
