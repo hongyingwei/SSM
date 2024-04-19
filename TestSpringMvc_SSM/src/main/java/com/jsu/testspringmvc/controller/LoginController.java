@@ -45,6 +45,8 @@ public class LoginController {
         
         User userInfo = this.userService.validateUserInfo(user);
         if (userInfo != null) {
+        	User resultUser = this.userService.findUserBy(userInfo.getId());
+        	System.err.println(resultUser.toString());
             session.setAttribute("user", userInfo);
             logger.info("login ok, result user: " + userInfo);
             return "success";

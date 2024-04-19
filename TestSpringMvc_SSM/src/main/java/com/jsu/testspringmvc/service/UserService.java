@@ -24,4 +24,8 @@ public class UserService {
         return this.userMapper.validateUserInfo(user);
     }
 
+	public User findUserBy(int id) {
+		return this.userMapper.findUserById(id);
+	}
+
 }
