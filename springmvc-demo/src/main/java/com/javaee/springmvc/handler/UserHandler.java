@@ -28,6 +28,7 @@ public class UserHandler {
     	System.out.println("进入Handler..........login");
         String userName = request.getParameter("userName");
         String password = request.getParameter("password");
+        System.err.println(userName);
         if ("admin".equals(password) && "admin".equals(userName)) {
             return "success";
         } else {
@@ -36,7 +37,7 @@ public class UserHandler {
     }
     
     @RequestMapping("/login2") // 标识url地址的,如果不用@requestParam，就需要参数名和请求的参数保持一致
-    public ModelAndView doLogin2(String userName, String password) {
+    public ModelAndView doLogin2(@RequestParam("username") String userName, String password) {
     	System.out.println("进入Handler..........login2");
     	ModelAndView mv = new ModelAndView();
     	System.err.println(userName +" " + password);

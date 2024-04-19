@@ -13,7 +13,7 @@
 		</init-param>
 		<load-on-startup>0</load-on-startup>
 	</servlet>
-	<!--  这种方式不会拦截.jsp的页面，但是会拦截静态资源css,js,png-->
+	<!-- 这种方式不会拦截.jsp的页面，但是会拦截静态资源css,js,png-->
 	<servlet-mapping>
 		<servlet-name>SpringMVC</servlet-name>
 		<url-pattern>/</url-pattern>

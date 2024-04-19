@@ -14,6 +14,10 @@
 
     <!-- 处理器适配器:handler的编写规则 -->
     <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"></bean>
+    
+    
+ 	<!-- 放行静态资源 -->
+ 	<mvc:default-servlet-handler/>
 
     <!-- 视图解析器 -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -23,6 +27,8 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
+	<!-- 路由路径 -->
     <bean name="/login.do" class="com.javaee.springmvc.handler.UserController"/>
+    
 
 </beans>

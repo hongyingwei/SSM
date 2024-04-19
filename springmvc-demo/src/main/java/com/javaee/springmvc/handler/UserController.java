@@ -14,6 +14,7 @@ public class UserController implements Controller {
 		ModelAndView modelAndView=new ModelAndView();
         String userName = request.getParameter("userName");
         String password = request.getParameter("password");
+        System.err.println(userName);
         if("admin".equals(password)&&"admin".equals(userName)){
             modelAndView.setViewName("success");
         }else{
